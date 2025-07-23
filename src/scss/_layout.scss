@@ -1,5 +1,6 @@
 @use "variables";
 @use "mixins";
+@use "sass:color";
 // Layout components
 .site-header {
   background-color: variables.$background-color;
@@ -7,9 +8,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-}
 
-.nav {
+  .nav {
   @include mixins.container;
 
   &__container {
@@ -46,12 +46,260 @@
   }
 }
 
+// Hamburger menu styles
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+
+  @include mixins.responsive(variables.$breakpoint-md) {
+    display: none;
+  }
+
+  &__line {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+    background-color: variables.$text-color;
+
+    &:first-child {
+      transform: rotate(0);
+    }
+
+    &:nth-child(2) {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &:nth-child(3) {
+      transform: rotate(0);
+    }
+  }
+
+  &.open {
+    .hamburger__line {
+      &:first-child {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    gap: 1.5rem;
+    background: variables.$background-color;
+    transition: max-height 0.3s cubic-bezier(.77,0,.18,1), padding 0.3s;
+    list-style: none;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      position: static;
+      width: auto;
+      max-height: none;
+      overflow: visible;
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+      box-shadow: none;
+      background: transparent;
+      gap: 2rem;
+    }
+
+    @include mixins.responsive(variables.$breakpoint-lg) {
+      gap: 3rem;
+    }
+  }
+
+  .nav-links.open {
+    max-height: 20rem;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      max-height: none;
+      padding: 0;
+    }
+
+    li a {
+      color: variables.$primary-color;
+    }
+  }
+}
+
+
 .site-main {
   min-height: calc(100vh - 140px);
   padding: 2rem 0;
 
   @include mixins.responsive(variables.$breakpoint-md) {
     padding: 4rem 0;
+  }
+
+  .index {
+
+    .hero {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      padding: 0.2rem 0.5rem;
+      background-color: #e6e0dc;
+
+      #hero-image {
+        width: 60%;
+        border-radius: 50%;
+        opacity: 60%;
+      }
+      .burger {
+        position: absolute;
+        top: 5%;
+        right: 0;
+        transform: translate(-50%, -50%);
+      }
+  
+      .hero-logo {
+        position: absolute;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        font-weight: 700;
+        color: variables.$text-color;
+
+      }
+    }
+
+    // Sewing Kits Section
+    .sewing-kits {
+      padding: 4rem 0;
+      background-color: variables.$light-background;
+
+      .container {
+        @include mixins.container;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: variables.$text-color;
+        margin-bottom: 3rem;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          font-size: 3rem;
+          margin-bottom: 4rem;
+        }
+      }
+
+      .kits-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem;
+        }
+
+        @include mixins.responsive(variables.$breakpoint-lg) {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 3rem;
+        }
+      }
+
+      .kit-card {
+        background: variables.$background-color;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .kit-image {
+          width: 100%;
+          height: 200px;
+          overflow: hidden;
+
+          @include mixins.responsive(variables.$breakpoint-md) {
+            height: 220px;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+        }
+
+        &:hover .kit-image img {
+          transform: scale(1.05);
+        }
+
+        .kit-content {
+          padding: 1.5rem;
+
+          @include mixins.responsive(variables.$breakpoint-md) {
+            padding: 2rem;
+          }
+
+          h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: variables.$text-color;
+            margin-bottom: 0.75rem;
+          }
+
+          p {
+            color: variables.$light-text;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+          }
+
+          .kit-link {
+            display: inline-block;
+            color: variables.$primary-color;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+              color: color.adjust(variables.$primary-color, $lightness: -10%);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
