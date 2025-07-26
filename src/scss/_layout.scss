@@ -155,6 +155,7 @@
 
 .site-main {
   min-height: calc(100vh - 140px);
+  background-color: variables.$light-background;
 
   @include mixins.responsive(variables.$breakpoint-md) {
   }
