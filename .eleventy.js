@@ -1,6 +1,11 @@
 const sass = require("sass");
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = function(eleventyConfig) {
+  // Add environment variables to global data
+  eleventyConfig.addGlobalData("env", process.env);
+  
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
