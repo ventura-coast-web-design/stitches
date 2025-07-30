@@ -237,39 +237,48 @@
 
       .container {
         @include mixins.container;
-        width: 100%;
+        width: 90%;
         max-width: 600px;
+
+        .section-title {
+          text-align: center;
+          font-size: 2rem;
+          font-weight: 700;
+          color: variables.$text-color;
+          margin-bottom: 1.5rem;
+  
+          @include mixins.responsive(variables.$breakpoint-md) {
+            font-size: 2.5rem;
+            text-align: left;
+          }
+
+          .about-icon {
+            width: 2rem;
+            margin-right: 1rem;
+          }
+        }
 
         @include mixins.responsive(variables.$breakpoint-md) {
           width: 50%;
           max-width: none;
         }
-      }
+        
+        p {
+          color: variables.$text-color;
+          text-align: center;
+          line-height: 1.6;
+          color: variables.$light-text;
 
-      .section-title {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
-        color: variables.$text-color;
-        margin-bottom: 1.5rem;
-
-        @include mixins.responsive(variables.$breakpoint-md) {
-          font-size: 2.5rem;
-          text-align: left;
+          @include mixins.responsive(variables.$breakpoint-md) {
+            text-align: left;
+          }
         }
       }
 
-      p {
-        text-align: center;
-        line-height: 1.6;
-        color: variables.$light-text;
 
-        @include mixins.responsive(variables.$breakpoint-md) {
-          text-align: left;
-        }
-      }
 
-      img {
+
+      .about-image {
         width: 100%;
         max-width: 400px;
         height: 300px;
@@ -289,7 +298,7 @@
       position: relative;
       padding: 4rem 0;
       background-color: variables.$blue-banner-color;
-      margin-top: 60px;
+      margin-top: 0;
       -webkit-mask: var(--mask);
       mask: var(--mask);
       --mask: 
@@ -314,20 +323,25 @@
           font-size: 3rem;
           margin-bottom: 4rem;
         }
+
+        .thread-icon {
+          width: 2rem;
+          margin-right: 1rem;
+        }
       }
 
       .kits-grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
 
         @include mixins.responsive(variables.$breakpoint-md) {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2.5rem;
         }
 
         @include mixins.responsive(variables.$breakpoint-lg) {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           gap: 3rem;
         }
       }
@@ -387,14 +401,54 @@
 
           .kit-link {
             display: inline-block;
-            color: variables.$primary-color;
-            font-weight: 500;
+            background-color: variables.$pink-banner-color;
+            color: variables.$text-color;
+            font-weight: 600;
             text-decoration: none;
-            transition: color 0.2s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
             &:hover {
-              color: color.adjust(variables.$primary-color, $lightness: -10%);
+              background-color: color.adjust(variables.$pink-banner-color, $lightness: -5%);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             }
+          }
+        }
+      }
+    }
+
+    .tiktok {
+      background-color: variables.$pink-banner-color;
+      padding: 4rem 0;
+      margin-top: -50px;
+      .tiktok-card {
+        @include mixins.container;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        @include mixins.responsive(variables.$breakpoint-md) {
+          flex-direction: row;
+        }
+
+        
+        .tiktok-content {
+          width: 100%;
+          @include mixins.responsive(variables.$breakpoint-md) {
+            width: 50%;
+          }
+        }
+        .tiktok-embed {
+          width: 100%;
+          @include mixins.responsive(variables.$breakpoint-md) {
+            width: 50%;
+          }
+
+          #embed-video-container {
+            background-color: variables.$pink-banner-color;
           }
         }
       }
