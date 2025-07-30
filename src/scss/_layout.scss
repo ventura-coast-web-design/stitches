@@ -20,9 +20,10 @@
   }
 
   &__logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: variables.$secondary-color;
+    
+    img {
+      height: 4.5rem;
+    }
   }
 
   &__menu {
@@ -163,22 +164,24 @@
   .index {
 
     .hero {
-      display: flex;
-      flex-direction: row;
       position: relative;
-      padding: 0.5rem 0.5rem;
+      height: 30vh;
+      overflow: hidden;
       background-color: #e6e0dc;
 
-      #hero-image {
-        width: 60%;
-        border-radius: 50%;
-        opacity: 60%;
+      @include mixins.responsive(variables.$breakpoint-md) {
+        height: 30vh;
       }
-      .burger {
-        position: absolute;
-        top: 5%;
-        right: 0;
-        transform: translate(-50%, -50%);
+
+      @include mixins.responsive(variables.$breakpoint-lg) {
+        height: 30vh;
+      }
+
+      #hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 60%;
       }
   
       .hero-logo {
@@ -187,20 +190,113 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 3rem;
+        font-size: 2.5rem;
+        font-family: 'Arvo', serif;
         font-weight: 700;
         color: variables.$text-color;
+        text-align: center;
+        z-index: 2;
 
+        @include mixins.responsive(variables.$breakpoint-md) {
+          font-size: 3rem;
+        }
+
+        @include mixins.responsive(variables.$breakpoint-lg) {
+          font-size: 3.5rem;
+        }
+      }
+
+      // single scalloped edge
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: variables.$light-background;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        transform: scaleX(1.5);
+        z-index: 1;
+      }
+    }
+
+    .about {
+      padding: 4rem 2rem;
+      background-color: variables.$light-background;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        flex-direction: row;
+        justify-content: center;
+        gap: 3rem;
+      }
+
+      .container {
+        @include mixins.container;
+        width: 100%;
+        max-width: 600px;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          width: 50%;
+          max-width: none;
+        }
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: variables.$text-color;
+        margin-bottom: 1.5rem;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          font-size: 2.5rem;
+          text-align: left;
+        }
+      }
+
+      p {
+        text-align: center;
+        line-height: 1.6;
+        color: variables.$light-text;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          text-align: left;
+        }
+      }
+
+      img {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          width: 40%;
+          height: auto;
+          max-width: none;
+        }
       }
     }
 
     // Sewing Kits Section
     .sewing-kits {
+      position: relative;
       padding: 4rem 0;
-      background-color: variables.$light-background;
+      background-color: variables.$blue-banner-color;
+      margin-top: 60px;
+
+
 
       .container {
         @include mixins.container;
+        position: relative;
+        z-index: 2;
       }
 
       .section-title {
