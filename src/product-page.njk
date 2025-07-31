@@ -10,26 +10,25 @@ permalink: product/{{product.url}}/index.html
 ---
 
 {% block content %}
-    <section class="single-product product">
-        <div class="inner u-flex">
-            <div class="single-product-image js-active-on-visible t-fade-in t-translate-down">
+    <section class="single-product">
+        <div class="inner">
+            <div class="single-product-image">
                 <div class="frame frame--1-by-1">
                     <img src="{{ "/" | url }}{{ product.image }}" alt="{{ product.credits }}">
                 </div>
             </div>
-            <div class="single-product-content product-content">
-                <h1 class="title js-active-on-visible t-fade-in t-translate-down" data-delay="100">{{ product.name }}</h1>
-                <p class="price js-active-on-visible t-fade-in t-translate-down" data-delay="250">{{ product.currency }}{{ product.price }}</p>
-                <p class="desc js-active-on-visible t-fade-in t-translate-down" data-delay="350">{{ product.description }}</p>
-                <button class="snipcart-add-item button js-active-on-visible t-fade-in t-translate-down"
-                  data-delay="500"
+            <div class="single-product-content">
+                <h1 class="title">{{ product.name }}</h1>
+                <p class="price">{{ product.currency }}{{ product.price }}</p>
+                <p class="desc">{{ product.description }}</p>
+                <button class="button snipcart-add-item"
                   data-item-id="{{ product.id }}"
                   data-item-price="{{ product.price }}"
                   data-item-url="{{ product.url }}"
                   data-item-description="{{ product.description }}"
                   data-item-image="{{ "/" | url }}{{ product.image }}"
                   data-item-name="{{ product.name }}">
-                  Ajouter au panier
+                  Add to Cart
                 </button>
             </div>
         </div>

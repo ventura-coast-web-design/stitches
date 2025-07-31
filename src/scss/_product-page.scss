@@ -1,0 +1,185 @@
+@use "variables";
+@use "mixins";
+@use "sass:color";
+
+.single-product {
+  min-height: calc(100vh - 140px);
+  background-color: variables.$light-background;
+  padding: 2rem 0;
+
+  @include mixins.responsive(variables.$breakpoint-md) {
+    padding: 4rem 0;
+  }
+
+  .inner {
+    @include mixins.container;
+    gap: 2rem;
+    align-items: flex-start;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      gap: 4rem;
+      align-items: center;
+    }
+  }
+
+  .single-product-image {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      width: 50%;
+      margin: 0;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      &--1-by-1 {
+        aspect-ratio: 1 / 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .single-product-content {
+    width: 100%;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      width: 50%;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: variables.$text-color;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      @include mixins.responsive(variables.$breakpoint-lg) {
+        font-size: 3.5rem;
+      }
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 600;
+      color: variables.$primary-color;
+      margin-bottom: 1.5rem;
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: variables.$light-text;
+      margin-bottom: 2rem;
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .button {
+      display: inline-block;
+      background-color: variables.$pink-banner-color;
+      color: variables.$text-color;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        font-size: 1.2rem;
+        padding: 1.25rem 2.5rem;
+      }
+
+      &:hover {
+        background-color: color.adjust(variables.$pink-banner-color, $lightness: -5%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+// Animation classes
+.js-active-on-visible {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.t-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.t-translate-down {
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@include mixins.responsive(variables.$breakpoint-sm) {
+  .single-product {
+    .inner {
+      flex-direction: column;
+    }
+
+    .single-product-image,
+    .single-product-content {
+      width: 100%;
+    }
+  }
+}
+// Loading states
+.single-product {
+  &.loading {
+    .single-product-image,
+    .single-product-content {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  }
+}
+

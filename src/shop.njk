@@ -5,13 +5,13 @@ description: "Sewing Kits for Beginners and Professionals"
 ---
 
 {% block content %}
+<div class="inner">
+  <h1 class="title">Solspun Threads Shop</h1>
+</div>
 <section class="grid-wrapper">
-  <div class="inner">
-    <h1 class="grid-wrapper-title">Shop</h1>
-  </div>
-  <div class="grid inner u-flex u-flex-wrap">
+  <div class="grid">
     {% for product in products.products %}
-        <div class="card u-flex js-active-on-visible t-fade-in t-translate-down" data-delay="{{ loop.index * 100 }}">
+        <div class="card" data-delay="{{ loop.index * 100 }}">
             <a href="/product/{{ product.url }}/index.html" class="no-underline">
               <div class="frame">
                   <img src="{{ url }}{{ product.image }}" width="300" loading="auto">
