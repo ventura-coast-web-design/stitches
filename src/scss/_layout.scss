@@ -1,6 +1,7 @@
 @use "variables";
 @use "mixins";
 @use "sass:color";
+@use "fonts";
 // Layout components
 .site-header {
   background-color: variables.$background-color;
@@ -8,6 +9,13 @@
   position: sticky;
   top: 0;
   z-index: 100;
+
+  .header-banner {
+    background-color: variables.$pink-banner-color;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
   .nav {
   @include mixins.container;
@@ -17,12 +25,16 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      flex-direction: column;
+    }
   }
 
   &__logo {
     
     img {
-      height: 4.5rem;
+      height: 5rem;
     }
   }
 
@@ -42,7 +54,7 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: variables.$primary-color;
+      color: variables.$text-color;
     }
   }
 }
@@ -148,7 +160,7 @@
     }
 
     li a {
-      color: variables.$primary-color;
+      color: variables.$text-color;
     }
   }
 }
@@ -165,16 +177,16 @@
 
     .hero {
       position: relative;
-      height: 30vh;
+      height: 60vh;
       overflow: hidden;
       background-color: #e6e0dc;
 
       @include mixins.responsive(variables.$breakpoint-md) {
-        height: 30vh;
+        height: 70vh;
       }
 
       @include mixins.responsive(variables.$breakpoint-lg) {
-        height: 30vh;
+        height: 80vh;
       }
 
       #hero-image {
@@ -190,19 +202,19 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 2.5rem;
-        font-family: 'Arvo', serif;
+        font-size: 5rem;
+        font-family: fonts.$font-vintage;
         font-weight: 700;
         color: variables.$text-color;
         text-align: center;
         z-index: 2;
 
         @include mixins.responsive(variables.$breakpoint-md) {
-          font-size: 3rem;
+          font-size: 9rem;
         }
 
         @include mixins.responsive(variables.$breakpoint-lg) {
-          font-size: 3.5rem;
+          font-size: 10rem;
         }
       }
 
