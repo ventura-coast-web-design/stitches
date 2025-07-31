@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Vintage Goods';
+  src: url('/assets/fonts/Vintage Goods.ttf') format('truetype'),
+       url('/assets/fonts/Vintage Goods.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Font variables
+$font-vintage: 'Vintage Goods', 'Playfair Display', 'Georgia', serif; 
