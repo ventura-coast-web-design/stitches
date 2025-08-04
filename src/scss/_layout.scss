@@ -456,12 +456,195 @@
     }
 
     .solspun-details {
-      padding: 4rem 0 2rem 0;
-      background-color: variables.$green-background;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+       padding: 4rem 0 2rem 0;
+       background-color: variables.$green-background;
+       display: grid;
+       grid-template-columns: 1fr;
+       gap: 2rem;
+       align-items: center;
+       justify-items: center;
+
+       @include mixins.responsive(variables.$breakpoint-md) {
+         grid-template-columns: repeat(2, 1fr);
+         grid-template-areas: 
+           "item1 item2"
+           "item3 item3";
+         gap: 3rem;
+       }
+
+       @include mixins.responsive(variables.$breakpoint-lg) {
+         grid-template-columns: repeat(3, 1fr);
+         grid-template-areas: 
+           "item1 item2 item3";
+         gap: 4rem;
+       }
+
+               .solspun-details-item {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 1rem;
+
+         &:nth-child(1) {
+           @include mixins.responsive(variables.$breakpoint-md) {
+             grid-area: item1;
+           }
+         }
+
+         &:nth-child(2) {
+           @include mixins.responsive(variables.$breakpoint-md) {
+             grid-area: item2;
+           }
+         }
+
+         &:nth-child(3) {
+           @include mixins.responsive(variables.$breakpoint-md) {
+             grid-area: item3;
+           }
+         }
+        img {
+          margin-top: 2rem;
+        }
+ 
+        p {
+          font-family: fonts.$font-alegreya;
+          color: black;
+          text-align: center;
+          line-height: 1.6;
+          font-size: 1.2rem;
+          margin-top: 2rem;
+          padding: 0 2rem;
+          max-width: 350px;
+        }
+       }
+
+         }
+
+     .blog {
+       padding: 4rem 2rem;
+       background-color: variables.$light-background;
+       
+       @include mixins.responsive(variables.$breakpoint-md) {
+         padding: 6rem 4rem;
+       }
+
+       .blog-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 3rem;
+         max-width: 1200px;
+         margin-left: auto;
+         margin-right: auto;
+
+         .blog-title {
+           font-family: fonts.$font-vintage;
+           font-size: 2.5rem;
+           color: variables.$text-color;
+           margin: 0;
+
+           @include mixins.responsive(variables.$breakpoint-md) {
+             font-size: 3rem;
+           }
+         }
+
+         .blog-view-all {
+           font-family: fonts.$font-alegreya;
+           color: variables.$text-color;
+           text-decoration: underline;
+           font-size: 1.1rem;
+           transition: color 0.3s ease;
+
+           &:hover {
+             color: variables.$primary-color;
+           }
+         }
+       }
+
+       .blog-post {
+         max-width: 400px;
+         margin: 0 auto 3rem auto;
+         background: white;
+         border-radius: 8px;
+         overflow: hidden;
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+         &:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+         }
+
+         .blog-image {
+           width: 100%;
+           height: 300px;
+           overflow: hidden;
+
+           img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+           }
+         }
+
+         .blog-content {
+           padding: 1.5rem;
+
+           .blog-post-title {
+             font-family: fonts.$font-alegreya;
+             font-size: 1.5rem;
+             color: variables.$text-color;
+             margin: 0 0 0.5rem 0;
+           }
+
+           .blog-date {
+             font-family: fonts.$font-alegreya;
+             font-size: 0.9rem;
+             color: variables.$light-text;
+             margin: 0 0 0.5rem 0;
+             font-weight: 500;
+           }
+
+           .blog-category {
+             font-family: fonts.$font-alegreya;
+             font-size: 0.9rem;
+             color: variables.$text-color;
+             margin: 0;
+             font-weight: 400;
+           }
+         }
+       }
+
+       .blog-pagination {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 1rem;
+
+         .pagination-arrow {
+           background: none;
+           border: none;
+           font-size: 1.2rem;
+           color: variables.$text-color;
+           cursor: pointer;
+           padding: 0.5rem;
+           border-radius: 50%;
+           transition: background-color 0.3s ease, color 0.3s ease;
+
+           &:hover {
+             background-color: variables.$primary-color;
+             color: white;
+           }
+         }
+
+         .pagination-text {
+           font-family: fonts.$font-alegreya;
+           font-size: 1rem;
+           color: variables.$text-color;
+           font-weight: 500;
+         }
+       }
+     }
 
   }
 }
