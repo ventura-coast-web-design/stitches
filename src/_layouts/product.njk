@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block head %}
-    <title>{% if title %}{{ title }}{% else %}Eleventy SCSS Template{% endif %}</title>
-    <meta name="description" content="{% if description %}{{ description }}{% else %}A simple static website built with Eleventy and SCSS{% endif %}">
-    {% endblock %}
+    <title>{{ product.name }} - Solspun Threads</title>
+    <meta name="description" content="{{ product.description }}">
     <link rel="icon" href="/assets/thread.png">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
