@@ -2,62 +2,17 @@
     "products" : [
         {
             "id": 1,
-            "price" : "15",
+            "price" : "45",
             "currency": "$",
-            "url": "basic-skirt",
-            "description": "Simple skirt for beginners.",
-            "image": "/assets/card-image1.jpg",
-            "name": "Basic Skirt Pattern",
-            "credits": "Local asset"
-        },
-        {
-            "id": 2,
-            "price" : "22",
-            "currency": "$",
-            "url": "summer-dress",
-            "description": "Light summer dress pattern.",
-            "image": "/assets/card-image2.jpg",
-            "name": "Summer Dress Pattern",
-            "credits": "Local asset"
-        },
-        {
-            "id": 3,
-            "price" : "18",
-            "currency": "$",
-            "url": "blouse-pattern",
-            "description": "Classic blouse sewing pattern.",
-            "image": "/assets/card-image3.jpg",
-            "name": "Classic Blouse Pattern",
-            "credits": "Local asset"
-        },
-        {
-            "id": 4,
-            "price" : "20",
-            "currency": "$",
-            "url": "pants-pattern",
-            "description": "Tailored pants for professionals.",
-            "image": "/assets/card-image1.jpg",
-            "name": "Tailored Pants Pattern",
-            "credits": "Local asset"
-        },
-        {
-            "id": 5,
-            "price" : "20",
-            "currency": "$",
-            "url": "jacket-pattern",
-            "description": "Casual jacket sewing pattern.",
-            "image": "/assets/card-image2.jpg",
-            "name": "Casual Jacket Pattern",
-            "credits": "Local asset"
-        },
-        {
-            "id": 6,
-            "price" : "35",
-            "currency": "$",
-            "url": "accessories-kit",
-            "description": "Essential sewing accessories kit.",
-            "image": "/assets/card-image3.jpg",
-            "name": "Sewing Accessories Kit",
+            "url": "canvas-tote-bag",
+            "description": "Handmade canvas tote bag with care.",
+            "image": "/assets/tote.jpg",
+            "images": [
+                "/assets/tote.jpg",
+                "/assets/card-image1.jpg",
+                "/assets/card-image2.jpg"
+            ],
+            "name": "Canvas Tote Bag",
             "credits": "Local asset"
         }
     ]
