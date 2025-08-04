@@ -36,6 +36,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
   eleventyConfig.addPassthroughCopy("src/css");
 
+  // Create blog collection
+  eleventyConfig.addCollection("blog", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/blog/**/*.md");
+  });
+
+  // Add date filter
+  eleventyConfig.addFilter("dateFilter", function(date) {
+    return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  });
+
   // Watch for CSS changes
   eleventyConfig.addWatchTarget("./src/css/main.css");
 

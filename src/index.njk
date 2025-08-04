@@ -72,25 +72,50 @@ description: "Sewing Kits for Beginners and Professionals"
       <a href="/blog" class="blog-view-all">View All</a>
     </div>
     
-    <div class="blog-post">
-      <div class="blog-image">
-        <img src="/assets/card-image1.jpg" alt="Fall Starter Pack" />
+    <div class="blog-posts-container">
+      {% set blogPosts = collections.blog | reverse %}
+      {% for post in blogPosts %}
+      <div class="blog-post" data-post-index="{{ loop.index0 }}">
+        <a href="{{ post.url }}" class="blog-post-link">
+          {% if post.data.image %}
+          <div class="blog-image">
+            <img src="{{ post.data.image }}" alt="{{ post.data.title }}" />
+          </div>
+          {% endif %}
+          <div class="blog-content">
+            <h3 class="blog-post-title">{{ post.data.title }}</h3>
+            <p class="blog-date">{{ post.date | dateFilter }}</p>
+            {% if post.data.category %}
+            <p class="blog-category">{{ post.data.category }}</p>
+            {% endif %}
+          </div>
+        </a>
       </div>
-      <div class="blog-content">
-        <h3 class="blog-post-title">Fall Starter Pack</h3>
-        <p class="blog-date">AUGUST 1, 2025</p>
-        <p class="blog-category">Fall Starter Pack</p>
-      </div>
+      {% endfor %}
     </div>
     
-    <div class="blog-pagination">
-      <button class="pagination-arrow prev">
+    {% if collections.blog.length > 3 %}
+    <div class="blog-pagination desktop-pagination">
+      <button class="pagination-arrow prev" aria-label="Previous page">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <span class="pagination-text">1/3</span>
-      <button class="pagination-arrow next">
+      <span class="pagination-text">1/{{ (collections.blog.length / 3) | round(0, 'ceil') }}</span>
+      <button class="pagination-arrow next" aria-label="Next page">
         <i class="fas fa-chevron-right"></i>
       </button>
     </div>
+    {% endif %}
+    
+    {% if collections.blog.length > 1 %}
+    <div class="blog-pagination mobile-pagination">
+      <button class="pagination-arrow prev" aria-label="Previous post">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <span class="pagination-text">1/{{ collections.blog.length }}</span>
+      <button class="pagination-arrow next" aria-label="Next post">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    {% endif %}
   </div>
 </div>

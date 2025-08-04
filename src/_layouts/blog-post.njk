@@ -1,0 +1,31 @@
+---
+layout: base.njk
+---
+
+<article class="blog-post-full">
+  <header class="blog-post-header">
+    <div class="container">
+      <h1 class="blog-post-title">{{ title }}</h1>
+      <div class="blog-post-meta">
+        <time class="blog-post-date">{{ date | dateFilter }}</time>
+        {% if category %}
+        <span class="blog-post-category">{{ category }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="blog-post-content">
+    <div class="container">
+      {% if image %}
+      <div class="blog-post-image">
+        <img src="{{ image }}" alt="{{ title }}" />
+      </div>
+      {% endif %}
+      
+      <div class="blog-post-body">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+</article> 

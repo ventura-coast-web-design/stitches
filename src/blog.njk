@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: "Blog - Solspun Threads"
+description: "Read the latest from Solspun Threads"
+permalink: /blog/
+---
+
+<div class="blog-index">
+  <header class="blog-index-header">
+    <div class="container">
+      <h1 class="blog-index-title">Blog</h1>
+      <p class="blog-index-description">Read the latest from Solspun Threads</p>
+    </div>
+  </header>
+
+  <div class="blog-posts-grid">
+    <div class="container">
+      {% for post in collections.blog | reverse %}
+      <article class="blog-post-card">
+        <a href="{{ post.url }}" class="blog-post-link">
+          {% if post.data.image %}
+          <div class="blog-post-image">
+            <img src="{{ post.data.image }}" alt="{{ post.data.title }}" />
+          </div>
+          {% endif %}
+          
+          <div class="blog-post-content">
+            <h2 class="blog-post-title">{{ post.data.title }}</h2>
+            <time class="blog-post-date">{{ post.date | dateFilter }}</time>
+            {% if post.data.category %}
+            <span class="blog-post-category">{{ post.data.category }}</span>
+            {% endif %}
+            {% if post.data.excerpt %}
+            <p class="blog-post-excerpt">{{ post.data.excerpt }}</p>
+            {% endif %}
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div> 
