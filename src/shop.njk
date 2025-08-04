@@ -1,35 +1,21 @@
 ---
 layout: base.njk
-title: "Solspun Threads Products"
-description: "Sewing Kits for Beginners and Professionals"
+title: "Shop - Solspun Threads"
+description: "Handmade canvas tote bag"
 ---
 
-{% block content %}
-<div class="inner">
-  <h1 class="title">Solspun Threads Shop</h1>
-</div>
-<section class="grid-wrapper">
-  <div class="grid">
-    {% for product in products.products %}
-        <div class="card" data-delay="{{ loop.index * 100 }}">
-            <a href="/product/{{ product.url }}/index.html" class="no-underline">
-              <div class="frame">
-                  <img src="{{ url }}{{ product.image }}" width="300" loading="auto">
-              </div>
-              <p class="card-title">{{ product.name }} - {{ product.currency }}{{ product.price }}</p>
-              <p class="card-desc">{{ product.description }}</p>
-            </a>
-            <button class="snipcart-add-item button"
-              data-item-id="{{ product.id }}"
-              data-item-price="{{ product.price }}"
-              data-item-url="{{ product.url }}"
-              data-item-description="{{ product.description }}"
-              data-item-image="{{ "/" | url }}{{ product.image }}"
-              data-item-name="{{ product.name }}">
-              Add to cart
-            </button>
-        </div>
-    {% endfor %}
+<script>
+  // Redirect directly to the tote bag product
+  window.location.href = '/product/canvas-tote-bag';
+</script>
+
+<div class="shop-page">
+  <div class="shop-header">
+    <h1 class="shop-title">Shop</h1>
+    <p class="shop-subtitle">Handmade with care and intention</p>
   </div>
-</section>
-{% endblock %}
+
+  <div class="redirect-message">
+    <p>Redirecting to our featured product...</p>
+  </div>
+</div>
