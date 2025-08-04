@@ -32,7 +32,7 @@
     .contact-subtitle {
       font-family: fonts.$font-alegreya;
       font-size: 1.2rem;
-      color: variables.$light-text;
+      color: variables.$text-color;
       line-height: 1.6;
       margin: 0;
     }
@@ -86,14 +86,21 @@
 
           i {
             font-size: 1.2rem;
-            color: variables.$primary-color;
+            color: variables.$text-color;
             width: 20px;
             text-align: center;
           }
 
-          span {
+          span,
+          a {
             font-family: fonts.$font-alegreya;
             font-size: 1rem;
+            color: variables.$text-color;
+            text-decoration: none;
+            transition: color 0.3s ease;
+          }
+
+          a:hover {
             color: variables.$text-color;
           }
         }
@@ -138,12 +145,12 @@
 
           &:focus {
             outline: none;
-            border-color: variables.$primary-color;
+            border-color: variables.$text-color;
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
           }
 
           &::placeholder {
-            color: variables.$light-text;
+            color: variables.$text-color;
           }
         }
 
@@ -177,7 +184,7 @@
         transition: background-color 0.3s ease, transform 0.3s ease;
 
         &:hover {
-          background-color: variables.$primary-color;
+          background-color: variables.$text-color;
           transform: translateY(-2px);
         }
 
