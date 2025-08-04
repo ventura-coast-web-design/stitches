@@ -1,6 +1,7 @@
 @use "variables";
 @use "mixins";
 @use "sass:color";
+@use "fonts";
 
 .single-product {
   min-height: calc(100vh - 140px);
@@ -32,32 +33,115 @@
       margin: 0;
     }
 
-    .frame {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      &--1-by-1 {
-        aspect-ratio: 1 / 1;
-      }
-
-      img {
+    .product-carousel {
+      .carousel-main {
+        position: relative;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
+        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+
+        .carousel-slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          &.active {
+            opacity: 1;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .carousel-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255, 255, 255, 0.9);
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 10;
+
+          &:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+          }
+
+          &.prev {
+            left: 10px;
+          }
+
+          &.next {
+            right: 10px;
+          }
+
+          i {
+            color: variables.$text-color;
+            font-size: 1rem;
+          }
+        }
       }
 
-      &:hover img {
-        transform: scale(1.05);
+      .carousel-thumbnails {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+
+        .thumbnail {
+          width: 60px;
+          height: 60px;
+          border: 2px solid transparent;
+          border-radius: 8px;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          background: none;
+          padding: 0;
+
+          &:hover {
+            border-color: variables.$text-color;
+            transform: scale(1.05);
+          }
+
+          &.active {
+            border-color: variables.$text-color;
+            position: relative;
+
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -2px;
+              left: -2px;
+              right: -2px;
+              height: 3px;
+              background: variables.$text-color;
+              border-radius: 0 0 6px 6px;
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
       }
     }
   }
@@ -70,6 +154,7 @@
     }
 
     .title {
+      font-family: fonts.$font-vintage;
       font-size: 2.5rem;
       font-weight: 700;
       color: variables.$text-color;
@@ -87,9 +172,10 @@
     }
 
     .price {
+      font-family: fonts.$font-alegreya;
       font-size: 2rem;
       font-weight: 600;
-      color: variables.$primary-color;
+      color: variables.$text-color;
       margin-bottom: 1.5rem;
 
       @include mixins.responsive(variables.$breakpoint-md) {
@@ -99,9 +185,10 @@
     }
 
     .desc {
+      font-family: fonts.$font-alegreya;
       font-size: 1.1rem;
       line-height: 1.6;
-      color: variables.$light-text;
+      color: variables.$text-color;
       margin-bottom: 2rem;
 
       @include mixins.responsive(variables.$breakpoint-md) {
@@ -112,14 +199,15 @@
 
     .button {
       display: inline-block;
-      background-color: variables.$pink-banner-color;
-      color: variables.$text-color;
+      background-color: variables.$text-color;
+      color: white;
+      font-family: fonts.$font-alegreya;
       font-size: 1.1rem;
       font-weight: 600;
       text-decoration: none;
       padding: 1rem 2rem;
       border: none;
-      border-radius: 50px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -130,7 +218,7 @@
       }
 
       &:hover {
-        background-color: color.adjust(variables.$pink-banner-color, $lightness: -5%);
+        background-color: variables.$text-color;
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
       }

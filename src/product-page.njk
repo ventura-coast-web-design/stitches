@@ -1,7 +1,5 @@
 ---
-layout: base.njk
-title: "Solspun Threads Products"
-description: "Sewing Kits for Beginners and Professionals"
+layout: product.njk
 pagination:
   data: products.products
   alias: product
@@ -9,12 +7,37 @@ pagination:
 permalink: product/{{product.url}}/index.html
 ---
 
-{% block content %}
-    <section class="single-product">
+<section class="single-product">
         <div class="inner">
             <div class="single-product-image">
-                <div class="frame frame--1-by-1">
-                    <img src="{{ "/" | url }}{{ product.image }}" alt="{{ product.credits }}">
+                <div class="product-carousel">
+                    <div class="carousel-main">
+                        <div class="carousel-slide active" data-index="0">
+                            <img src="{{ product.images[0] }}" alt="{{ product.name }}">
+                        </div>
+                        {% for image in product.images %}
+                        {% if loop.index > 1 %}
+                        <div class="carousel-slide" data-index="{{ loop.index0 }}">
+                            <img src="{{ image }}" alt="{{ product.name }}">
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        <button class="carousel-nav prev" aria-label="Previous image">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav next" aria-label="Next image">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="carousel-thumbnails">
+                        {% for image in product.images %}
+                        <button class="thumbnail {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="View image {{ loop.index }}">
+                            <img src="{{ image }}" alt="{{ product.name }}">
+                        </button>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="single-product-content">
@@ -26,11 +49,10 @@ permalink: product/{{product.url}}/index.html
                   data-item-price="{{ product.price }}"
                   data-item-url="{{ product.url }}"
                   data-item-description="{{ product.description }}"
-                  data-item-image="{{ "/" | url }}{{ product.image }}"
+                  data-item-image="{{ product.image }}"
                   data-item-name="{{ product.name }}">
                   Add to Cart
                 </button>
             </div>
         </div>
     </section>
-{% endblock %}
