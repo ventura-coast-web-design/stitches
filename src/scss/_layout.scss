@@ -520,7 +520,7 @@
 
          }
 
-            .blog {
+    .blog {
          padding: 4rem 2rem;
          background-color: variables.$light-background;
          
@@ -688,6 +688,36 @@
            display: flex;
          }
        }
+     }
+
+     .follow-us {
+      padding: 4rem 2rem;
+      background-color: variables.$light-background;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .section-title {
+        font-size: 2.5rem;
+        color: variables.$text-color;
+        font-family: fonts.$font-vintage;
+      }
+
+      .follow-us-icons {
+        display: flex;
+        gap: 1rem;
+        font-size: 2rem;
+
+        a {
+          color: variables.$text-color;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: variables.$primary-color;
+          }
+        }
+      }
+
      }
 
   }
