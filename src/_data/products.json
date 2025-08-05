@@ -2,9 +2,9 @@
     "products" : [
         {
             "id": 1,
-            "price" : "45",
+            "price" : "45.00",
             "currency": "$",
-            "url": "canvas-tote-bag",
+            "url": "/product/canvas-tote-bag",
             "description": "Handmade canvas tote bag with care.",
             "image": "/assets/tote.jpg",
             "images": [
