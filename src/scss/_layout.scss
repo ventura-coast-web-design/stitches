@@ -154,7 +154,6 @@
     transition: max-height 0.3s cubic-bezier(.77,0,.18,1), padding 0.3s;
     list-style: none;
     z-index: 1000;
-    border: 1px solid variables.$border-color;
 
     @include mixins.responsive(variables.$breakpoint-md) {
       position: static;
