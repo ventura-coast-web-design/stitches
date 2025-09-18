@@ -217,43 +217,51 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 60%;
       }
   
       .hero-logo {
         position: absolute;
         width: 80%;
-        top: 50%;
+        top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 5rem;
-        font-family: fonts.$font-vintage;
-        font-weight: 700;
-        color: variables.$text-color;
+        font-size: 3rem;
+        font-family: 'Libre Baskerville', serif;
+        font-weight: 200;
+        color: white;
         text-align: center;
         z-index: 2;
 
         @include mixins.responsive(variables.$breakpoint-md) {
-          font-size: 9rem;
+          font-size: 4rem;
         }
 
         @include mixins.responsive(variables.$breakpoint-lg) {
-          font-size: 10rem;
+          font-size: 5rem;
         }
       }
 
-      // single scalloped edge
-      &::after {
-        content: '';
+      .hero-button {
+        background-color: variables.$light-background;
+        color: variables.$text-color;
+        border: none;
+        padding: 1rem 4rem;
+        border-radius: 10px;
+        font-family: fonts.$font-alegreya;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
         position: absolute;
-        bottom: -40px;
-        left: 0;
-        width: 100%;
-        height: 80px;
-        background: variables.$green-background;
-        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-        transform: scaleX(1.5);
-        z-index: 1;
+        bottom: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:hover {
+          background-color: variables.$secondary-color;
+          color: white;
+        }
       }
     }
 
