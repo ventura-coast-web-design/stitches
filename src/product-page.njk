@@ -48,10 +48,10 @@ permalink: product/{{product.url}}/index.html
                 <button class="button snipcart-add-item"
                   data-item-id="{{ product.id }}"
                   data-item-price="{{ product.price }}"
-                  data-item-url="/product/{{ product.url }}"
                   data-item-description="{{ product.description }}"
                   data-item-image="{{ product.image }}"
-                  data-item-name="{{ product.name }}">
+                  data-item-name="{{ product.name }}"
+                  data-item-url="https://example.com/product/{{ product.url }}">
                   Add to Cart
                 </button>
             </div>
