@@ -591,7 +591,8 @@
     //  }
 
     .about {
-      background-color: variables.$light-background;
+      padding: 4rem 2rem;
+      background-color: variables.$green-background;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -604,7 +605,9 @@
       }
 
       .container {
-        background-color: variables.$green-background;
+        @include mixins.container;
+        width: 90%;
+        max-width: 600px;
 
         .section-title {
           text-align: center;
@@ -629,7 +632,7 @@
           color: variables.$text-color;
           text-align: center;
           line-height: 1.6;
-          font-family: 'Libre Baskerville', serif;
+          font-family: fonts.$font-alegreya;
 
           @include mixins.responsive(variables.$breakpoint-md) {
             text-align: left;
@@ -637,15 +640,86 @@
         }
       }
 
+      .polaroid-container {
+        position: relative;
+        width: 100%;
+        max-width: 350px;
+        height: 400px;
+
+        @include mixins.responsive(variables.$breakpoint-md) {
+          width: 40%;
+          height: 450px;
+          max-width: none;
+        }
+      }
+
+      .polaroid-back {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        height: 100%;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transform: rotate(-5deg);
+        z-index: 1;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          right: 15px;
+          bottom: 60px;
+          background-image: url('/assets/card-image1.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
 
       .about-image {
+        position: relative;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        background: variables.$light-background;
-        padding: 2rem;
+        border-radius: 0;
+        background: white;
+        padding: 15px 15px 60px 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        transform: rotate(2deg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         z-index: 2;
 
+        &::before {
+          content: '';
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          right: 15px;
+          bottom: 60px;
+          background: inherit;
+          z-index: -1;
+          transform: rotate(-1deg);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 25px;
+          left: 25px;
+          right: 25px;
+          bottom: 70px;
+          background: inherit;
+          z-index: -2;
+          transform: rotate(-2deg);
+          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        &:hover {
+          transform: rotate(3deg) scale(1.02);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
       }
     }
 
