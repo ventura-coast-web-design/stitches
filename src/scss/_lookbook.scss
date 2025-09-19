@@ -2,4 +2,120 @@
 @use "mixins";
 @use "fonts";
 
+.lookbook {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 
+  @include mixins.responsive(variables.$breakpoint-md) {
+    padding: 4rem 2rem;
+  }
+
+  .lookbook-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .lookbook-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: variables.$text-color;
+      margin: 0 0 1rem 0;
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        font-size: 3.5rem;
+      }
+    }
+
+    .lookbook-subtitle {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.1rem;
+      color: variables.$light-text;
+      margin: 0;
+      font-style: italic;
+
+      @include mixins.responsive(variables.$breakpoint-md) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .lookbook-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include mixins.responsive(variables.$breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .lookbook-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+
+      // Mobile: All items are full width
+      &--hero,
+      &--landscape,
+      &--portrait {
+        grid-column: 1;
+        aspect-ratio: 4/3;
+      }
+
+      // Desktop layout
+      @include mixins.responsive(variables.$breakpoint-md) {
+        &--hero {
+          grid-column: 1 / -1;
+          aspect-ratio: 21/9;
+          margin-bottom: 0.5rem;
+        }
+
+        &--landscape {
+          grid-column: 1 / -1;
+          aspect-ratio: 16/9;
+        }
+
+        &--portrait {
+          grid-column: span 1;
+          aspect-ratio: 3/4;
+        }
+      }
+
+      // Large screens: Adjust spacing and ratios
+      @include mixins.responsive(variables.$breakpoint-lg) {
+        &--hero {
+          aspect-ratio: 24/9;
+        }
+
+        &--landscape {
+          aspect-ratio: 18/9;
+        }
+
+        &--portrait {
+          aspect-ratio: 4/5;
+        }
+      }
+    }
+  }
+}
