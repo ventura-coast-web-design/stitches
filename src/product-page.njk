@@ -4,41 +4,74 @@ pagination:
   data: products.products
   alias: product
   size: 1
-permalink: product/{{product.url}}/index.html
+permalink: "{{product.url}}/index.html"
 ---
 
 <section class="single-product">
-        <div class="inner">
-            <div class="single-product-image">
-                <div class="product-carousel">
-                    <div class="carousel-main">
-                        <div class="carousel-slide active" data-index="0">
-                            <img src="{{ product.images[0] }}" alt="{{ product.name }}">
-                        </div>
-                        {% for image in product.images %}
-                        {% if loop.index > 1 %}
-                        <div class="carousel-slide" data-index="{{ loop.index0 }}">
-                            <img src="{{ image }}" alt="{{ product.name }}">
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        
-                        <button class="carousel-nav prev" aria-label="Previous image">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-nav next" aria-label="Next image">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="carousel-thumbnails">
-                        {% for image in product.images %}
-                        <button class="thumbnail {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="View image {{ loop.index }}">
-                            <img src="{{ image }}" alt="{{ product.name }}">
-                        </button>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
+  <div class="product-container">
+    <!-- Product Images Section -->
+    <div class="product-images">
+      <div class="product-carousel">
+        <div class="carousel-main">
+          {% for image in product.images %}
+          <div class="carousel-slide {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}">
+            <img src="{{ image }}" alt="{{ product.name }}">
+          </div>
+          {% endfor %}
+          
+          <!-- Mobile swipe indicators -->
+          <div class="carousel-dots">
+            {% for image in product.images %}
+            <span class="dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}"></span>
+            {% endfor %}
+          </div>
         </div>
-    </section>
+        
+        <!-- Desktop thumbnails -->
+        <div class="carousel-thumbnails">
+          {% for image in product.images %}
+          <button class="thumbnail {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="View image {{ loop.index }}">
+            <img src="{{ image }}" alt="{{ product.name }}">
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details Section -->
+    <div class="product-details">
+      <h1 class="product-title">{{ product.title }}</h1>
+      <p class="product-price">{{ product.currency }}{{ product.price }}</p>
+      
+      <!-- Quote section -->
+      <blockquote class="product-quote">
+        "I like good, strong words that mean something." -Jo March
+      </blockquote>
+      
+      <!-- Etsy Button -->
+      <a href="{{ product.etsyUrl }}" class="etsy-button" target="_blank" rel="noopener noreferrer">
+        BUY ON ETSY
+      </a>
+      
+      <!-- Product Details -->
+      <div class="product-info">
+        <h3 class="details-title">DETAILS</h3>
+        <p class="details-intro">A tribute to Jo March and all who cherish meaningful words.</p>
+        
+        <ul class="product-features">
+          <li>Crafted from sturdy 10oz cotton canvas to carry books, notebooks, and daily essentials with ease</li>
+          <li>Two lined front pockets for quick access to your go-tos</li>
+          <li>Gold metal snap closure to keep belongings secure</li>
+          <li>One interior pocket for smaller items</li>
+          <li>Lining printed with text from a Louisa May Alcott novel — honouring both Alcott's voice and Jo March's love of words</li>
+          <li>39" contrast cotton handles for a comfortable shoulder fit</li>
+        </ul>
+        
+        <div class="product-notes">
+          <p><strong>Limited Edition:</strong> Each tote is crafted in small batches and will not be restocked.</p>
+          <p><strong>Shipping:</strong> U.S. shipping only ✨ Orders ship from our studio in 2-3 business days. Because each piece is made with care, all sales are final (no returns). Thank you for understanding!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

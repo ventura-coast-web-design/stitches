@@ -2,18 +2,20 @@
     "products" : [
         {
             "id": 1,
-            "price" : "45.00",
+            "price" : "150.00",
             "currency": "$",
             "url": "/product/canvas-tote-bag",
+            "etsyUrl": "https://www.etsy.com/listing/4329438143",
             "description": "Handmade canvas tote bag with care.",
             "image": "/assets/tote.jpg",
             "images": [
-                "/assets/tote.jpg",
-                "/assets/card-image1.jpg",
-                "/assets/card-image2.jpg"
+                "/assets/productimages/gswtote/GSW PP1.jpg",
+                "/assets/productimages/gswtote/GSW PP2.jpg",
+                "/assets/productimages/gswtote/GSW PP3.jpg",
+                "/assets/productimages/gswtote/GSW PP4.jpg"
             ],
             "name": "Canvas Tote Bag",
-            "title": "Book Lover",
+            "title": "Good, Strong Words Tote",
             "credits": "Local asset"
         }
     ]
