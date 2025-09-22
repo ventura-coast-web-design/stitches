@@ -13,7 +13,7 @@
 
     @include mixins.responsive(variables.$breakpoint-md) {
       flex-direction: row;
-      min-height: 100vh;
+      min-height: 80vh;
     }
   }
 
@@ -41,11 +41,23 @@
           display: block;
         }
 
-        // Mobile horizontal layout
+        // Mobile horizontal layout - show multiple images
         @media (max-width: 767px) {
           display: flex;
           flex-direction: row;
           transition: transform 0.3s ease;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          height: 500px;
+          min-height: 500px;
+          
+          &::-webkit-scrollbar {
+            display: none;
+          }
         }
 
         .carousel-slide {
@@ -70,11 +82,18 @@
             }
           }
 
-          // Mobile layout
+          // Mobile layout - show multiple images side by side
           @media (max-width: 767px) {
             position: relative;
             opacity: 1;
             transition: none;
+            flex: 0 0 60%;
+            width: 80%;
+            height: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
 
           img {
