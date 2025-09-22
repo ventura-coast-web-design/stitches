@@ -18,13 +18,6 @@ permalink: "{{product.url}}/index.html"
             <img src="{{ image }}" alt="{{ product.name }}">
           </div>
           {% endfor %}
-          
-          <!-- Mobile swipe indicators -->
-          <div class="carousel-dots">
-            {% for image in product.images %}
-            <span class="dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}"></span>
-            {% endfor %}
-          </div>
         </div>
         
         <!-- Desktop thumbnails -->
