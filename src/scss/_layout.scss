@@ -242,6 +242,8 @@
         }
       }
 
+      
+
       .hero-button {
         background-color: variables.$light-background;
         color: variables.$text-color;
@@ -259,10 +261,12 @@
         bottom: 35%;
         left: 50%;
         transform: translateX(-50%);
+        text-align: center;
 
         &:hover {
           background-color: variables.$secondary-color;
           color: white;
+          text-decoration: none;
         }
       }
     }
