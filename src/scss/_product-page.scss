@@ -204,7 +204,8 @@
     }
 
     .product-price {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Poppins', sans-serif;
+      font-style: italic;
       font-size: 1.5rem;
       font-weight: 600;
       color: variables.$text-color;
@@ -234,7 +235,7 @@
       display: inline-block;
       background-color: #333;
       color: white;
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
@@ -242,7 +243,7 @@
       letter-spacing: 1px;
       padding: 1rem 2rem;
       border: none;
-      border-radius: 0;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
       text-align: center;
@@ -269,9 +270,9 @@
       margin-top: 2rem;
 
       .details-title {
-        font-family: 'Libre Baskerville', serif;
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
         font-size: 1.2rem;
-        font-weight: 700;
         color: variables.$text-color;
         margin: 0 0 0.5rem 0;
         text-transform: uppercase;
@@ -279,7 +280,7 @@
       }
 
       .details-intro {
-        font-family: 'Libre Baskerville', serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 1rem;
         color: variables.$text-color;
         margin: 0 0 1rem 0;
@@ -291,11 +292,11 @@
         margin: 0 0 2rem 0;
 
         li {
-          font-family: 'Libre Baskerville', serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 0.95rem;
           line-height: 1.6;
           color: variables.$text-color;
-          margin-bottom: 0.8rem;
+          margin-bottom: 0.5rem;
           padding-left: 1.5rem;
           position: relative;
 
@@ -311,7 +312,7 @@
 
       .product-notes {
         p {
-          font-family: 'Libre Baskerville', serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 0.9rem;
           line-height: 1.5;
           color: variables.$text-color;

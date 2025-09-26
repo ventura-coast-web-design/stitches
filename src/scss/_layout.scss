@@ -251,7 +251,7 @@
         width: 40%;
         padding: 1rem 0;
         border-radius: 10px;
-        font-family: fonts.$font-alegreya;
+        font-family: 'Poppins', sans-serif;
         font-size: 1.2rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -297,7 +297,7 @@
         .section-title {
           font-size: 2.5rem;
           color: black;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Libre Baskerville', serif;
           font-weight: 500;
           margin-left: 1rem;
         }
@@ -344,7 +344,7 @@
         border-radius: 10px;
         padding: 0.60rem 1rem;
         border: none;
-        font-family: fonts.$font-alegreya;
+        font-family: 'Poppins', sans-serif;
         font-size: 1.2rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -541,7 +541,7 @@
           font-weight: 700;
           color: variables.$text-color;
           margin: 1.5rem 0;
-          font-family: fonts.$font-vintage;
+          font-family: fonts.$font-vintage;;
   
           @include mixins.responsive(variables.$breakpoint-md) {
             font-size: 2.5rem;
@@ -558,7 +558,7 @@
           color: variables.$text-color;
           text-align: center;
           line-height: 1.6;
-          font-family: fonts.$font-alegreya;
+          font-family: 'Poppins', sans-serif;
 
           @include mixins.responsive(variables.$breakpoint-md) {
             text-align: left;
@@ -657,9 +657,9 @@
       align-items: center;
 
       .section-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: variables.$text-color;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Libre Baskerville', serif;
       }
 
       .follow-us-icons {
@@ -681,7 +681,7 @@
         margin-top: 1rem;
         font-size: 2rem;
         color: variables.$text-color;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Libre Baskerville', serif;
       }
       
       .contact-us-text {
